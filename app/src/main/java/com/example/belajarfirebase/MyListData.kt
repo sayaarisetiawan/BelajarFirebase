@@ -47,6 +47,7 @@ private val database = FirebaseDatabase.getInstance()
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()) {
+                        dataMahasiswa.clear()
                         for (snapshot in dataSnapshot.children) {
 //Mapping data pada DataSnapshot ke dalam objek mahasiswa
                             val mahasiswa = snapshot.getValue(data_mahasiswa::class.java)

@@ -74,8 +74,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 AuthUI.getInstance()
 
                     .signOut(this)
-                    .addOnCompleteListener(object :
-                        OnCompleteListener<Void> {
+                    .addOnCompleteListener(object : OnCompleteListener<Void> {
                         override fun onComplete(p0: Task<Void>) {
                             Toast.makeText(this@MainActivity,
                                 "Logout Berhasil", Toast.LENGTH_SHORT).show()
