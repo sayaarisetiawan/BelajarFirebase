@@ -66,6 +66,8 @@ class RecyclerViewAdapter
                         }
 
                         1 -> {
+                            //Menggunakan interface untuk mengirim data mahasiswa, yang akan dihapus
+                            listener?.onDeleteData(listMahasiswa.get(position), position)
                         }
                     }
                 }
@@ -77,12 +79,19 @@ class RecyclerViewAdapter
             true
         }
     }
+    //Membuat Interfece
+    interface dataListener {
+        fun onDeleteData(data: data_mahasiswa?, position: Int)
+    }
     override fun getItemCount(): Int {
 //Menghitung Ukuran/Jumlah Data Yang Akan Ditampilkan Pada RecyclerView
         return listMahasiswa.size
     }
+    //Deklarasi objek dari Interfece
+    var listener: dataListener? = null
     //Membuat Konstruktor, untuk menerima input dari Database
     init {
         this.context = context
+        this.listener = context as MyListData //menambahkan baris ini saja
     }
 }
